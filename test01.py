@@ -27,12 +27,12 @@ def process_video():
                 .resize(width=150)  # 调整宽度
                 .margin(right=10, top=10, opacity=0)  # 右侧10像素，顶部10像素
                 .set_pos(("right", "top")))
-    # 8. 创建渐变动画
-    gradient = color_gradient(video_origin.size, p1=(0, 0), p2=(video_origin.w, 0),
-                              col1=[0, 0, 0], col2=[255, 255, 0], offset=0.5)
-    gradient_clip = ImageClip(gradient, duration=2).set_start(5).crossfadein(1)
+    # # 8. 创建渐变动画
+    # gradient = color_gradient(video_origin.size, p1=(0, 0), p2=(video_origin.w, 0),
+    #                           col1=[0, 0, 0], col2=[255, 255, 0], offset=0.5)
+    # gradient_clip = ImageClip(gradient, duration=2).set_start(5).crossfadein(1)
     # 合并所有元素
-    final = CompositeVideoClip([final_clip, txt_clip, img_clip, gradient_clip])
+    final = CompositeVideoClip([final_clip, txt_clip, img_clip])
     # 导出视频
     final.write_videofile("output.mp4",
                           codec='libx264',
